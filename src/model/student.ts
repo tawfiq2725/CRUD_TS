@@ -6,7 +6,7 @@ interface Student extends Document {
     age : number ,
     email : string ,
     gender : string , 
-    class : number
+    grade : number
 }
 
 
@@ -29,7 +29,7 @@ const studentSchema:Schema = new Schema({
         type:String,
         required:true
     },
-    class:{
+    grade:{
         type:Number,
         required:true
     }

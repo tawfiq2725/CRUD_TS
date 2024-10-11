@@ -1,0 +1,34 @@
+<style>
+  .new {
+    width: 500px;
+    position: relative;
+    left: 500px;
+  }
+</style>
+<div class="container mt-5 new">
+  <h1 class="mb-4">Student Detail</h1>
+  <ul class="list-group">
+    <li class="list-group-item"><strong>Name:</strong> <%= student.name %></li>
+    <li class="list-group-item"><strong>Age:</strong> <%= student.age %></li>
+    <li class="list-group-item">
+      <strong>Email:</strong> <%= student.email %>
+    </li>
+    <li class="list-group-item">
+      <strong>Gender:</strong> <%= student.gender %>
+    </li>
+    <li class="list-group-item">
+      <strong>Grade:</strong> <%= student.grade %>
+    </li>
+  </ul>
+  <div class="mt-3">
+    <a href="/students" class="btn btn-secondary">Back to List</a>
+    <a href="/students/<%= student._id %>/edit" class="btn btn-warning">Edit</a>
+    <form
+      action="/students/<%= student._id %>?_method=DELETE"
+      method="POST"
+      style="display: inline"
+    >
+      <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+  </div>
+</div>
