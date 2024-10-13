@@ -2,9 +2,44 @@ import { Request, Response } from 'express';
 import { StudentServiceImpl } from '../services/studentService';
 const studentService = new StudentServiceImpl();
 
+let credentials = {
+    email:"admin@gmail.com",
+    password:"admin@123"
+}
+
 class StudentController {
+    
+    // Login page
+    loginInterface = (req:Request , res:Response)=>{
+        try {
+            return res.render('login',{
+                title:"Login Page"
+            })
+        } catch (error) {
+            res.status(500).send("Server error")
+            console.log( error + "An error Occured" )   
+        }
+    }
+
+    // Check credentials 
+    authCheck = (req:Request , res:Response)=>{
+        try {
+            const { email, password } = req.body;
+            if (email === credentials.email && password === credentials.password) {
+                res.render('home', {
+                    title: "Home Page",
+                });
+            } else {
+                res.redirect("/login");
+            }
+        } catch (error) {
+            res.status(500).send("An error occurred while processing your request");
+            console.error("Error during authentication:", error);
+        }
+    }
+
     // Home route
-    getHome = async (req: Request, res: Response): Promise<void> => {
+    getHome =  (req: Request, res: Response)=> {
         try {
             res.render('home', {
                 title: 'Student List',

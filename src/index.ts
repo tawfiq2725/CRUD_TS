@@ -5,6 +5,7 @@ import router from "./routes/routes";
 import expressEjsLayouts from "express-ejs-layouts";
 import methodOverride from "method-override"
 
+
 const app = express();
 const PORT = 3000;
 connection();
